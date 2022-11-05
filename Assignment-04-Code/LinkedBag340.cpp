@@ -1,8 +1,9 @@
 //	LinkedBag340.cpp
 //	Created by: Kent Nguyen
-#include "Include.h"
+#include "LinkedBag.h"
 using namespace std;
 #include <cstdlib>
+#include <iostream>
 
 
 template<typename ItemType>
@@ -42,7 +43,7 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType&item)
 
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
-	return ItemType;
+	return NULL;
 }
 
 template<typename ItemType>
