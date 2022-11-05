@@ -2,9 +2,11 @@
 #include "Node.cpp"
 #include "BagInterface.h"
 
+
+template<typename ItemType>
 class LinkedBag : public BagInterface<ItemType> {
 
-	/*--------------------------CSC340-------------------------------------*/
+
 public:
 	bool removeSecondNode340();
 	bool addEnd340(const ItemType&);
@@ -18,3 +20,11 @@ private:
 	int getCurrentSize340RecursiveHelper(Node<ItemType>*) const; // if needed
 	int getFrequencyOf340RecursiveHelper(Node<ItemType>*, const ItemType&) const; // if needed
 	/*----------------------------------------------------------------------*/
+
+
+private:
+	Node<ItemType>* headPtr{ nullptr }; // Pointer to first node
+	int itemCount{ 0 };					// Current count of bag items
+
+
+};
