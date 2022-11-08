@@ -2,6 +2,8 @@
 using namespace std;
 #include <cstdlib>
 #include <iostream>
+#include <random>
+#include <string>
 
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340() {
@@ -95,7 +97,7 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item
 		result = 1;
 	}
 	if (currentNodePtr->getNext() == nullptr) {
-		currentNodePtr = headPtr; //currentNodePtr seems to stay in memory after the method call is completed and carries into the next instance of that method.
+		currentNodePtr = headPtr; //currentNodePtr seems to stay in memory after the method call is completed and carries into the next instance of that method if not reset at end of recursion
 		return result;
 	}
 	else {
@@ -104,9 +106,41 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item
 	}
 }
 
+//function will generate a random number between zero and itemCount. If head node is selected then the head node is deleted. Otherwise value of the randomly selected
+//node will be swapped with the current value of the headPtr. headPtr will be deleted afterwards.
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
-	return 0;
+	ItemType itemToBeRemoved = "";
+	int randomIndexToBeRemoved = rand() % itemCount; //the remainder is always from zero to itemCount-1
+
+
+	if (randomIndexToBeRemoved == 0) {//if head is selected
+		auto* nodeToBeDeleted = headPtr;
+		itemToBeRemoved = nodeToBeDeleted->getItem();
+		headPtr = headPtr->getNext();
+		nodeToBeDeleted->setNext(nullptr);
+		delete nodeToBeDeleted;
+		nodeToBeDeleted = nullptr;
+		itemCount--;
+	}
+	else {//non-head nodes
+		Node<ItemType>* nodeToBeDeleted = headPtr;
+		while (randomIndexToBeRemoved != 0) {
+			nodeToBeDeleted = nodeToBeDeleted->getNext();
+			randomIndexToBeRemoved--;
+		}
+		itemToBeRemoved = nodeToBeDeleted->getItem();
+		nodeToBeDeleted->setItem(headPtr->getItem());//replace target node value with value from headPtr
+		nodeToBeDeleted = headPtr;//reset the pointer
+		headPtr = headPtr->getNext();//set new head
+		nodeToBeDeleted->setNext(nullptr);//delete old head
+		delete nodeToBeDeleted;
+		nodeToBeDeleted = nullptr;
+		itemCount--;
+	}
+	return itemToBeRemoved;
+
+
 }
 
 

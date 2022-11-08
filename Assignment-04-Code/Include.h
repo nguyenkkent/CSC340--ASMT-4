@@ -1,6 +1,7 @@
 using namespace std;
 #include <string>
 #include <vector>
+#include <memory>
 #include "LinkedBag.cpp"
 #include "LinkedBag340.cpp"
 
