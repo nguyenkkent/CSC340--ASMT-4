@@ -91,11 +91,11 @@ template<typename ItemType>
 int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item) const {
 	int result = 0;
 	static Node<ItemType>* currentNodePtr = headPtr;
-	if ((currentNodePtr->getItem()) == item ) {
+	if (currentNodePtr->getItem() == item) {
 		result = 1;
 	}
 	if (currentNodePtr->getNext() == nullptr) {
-		currentNodePtr = currentNodePtr->getNext();
+		currentNodePtr = headPtr; //currentNodePtr seems to stay in memory after the method call is completed and carries into the next instance of that method.
 		return result;
 	}
 	else {
@@ -106,7 +106,7 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item
 
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
-	return NULL;
+	return 0;
 }
 
 
