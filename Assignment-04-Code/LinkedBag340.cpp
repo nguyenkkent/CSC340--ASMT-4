@@ -1,39 +1,81 @@
-//	LinkedBag340.cpp
-//	Created by: Kent Nguyen
 #include "LinkedBag.h"
 using namespace std;
 #include <cstdlib>
 #include <iostream>
 
-
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340() {
+	if (itemCount < 2) {
+		return false;
+	}
+	//assertion: there is atleast 2 items in the bag
+	Node<ItemType>* currentNodePtr = headPtr->getNext();
+	headPtr->setNext(currentNodePtr->getNext());
+	currentNodePtr->setNext(nullptr);
+	delete currentNodePtr;
+	currentNodePtr = nullptr;
+	itemCount--;
 	return true;
 }
 
 template<typename ItemType>
 bool LinkedBag<ItemType>::addEnd340(const ItemType& item) {
+	Node<ItemType>* currentNodePtr = headPtr;
+	while (currentNodePtr->getNext() != nullptr) {
+		currentNodePtr = currentNodePtr->getNext();
+	}
+	currentNodePtr->setNext(new Node<ItemType>(item));
+	itemCount++;
 	return true;
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Iterative() const {
-	return 10;
+	int counter = 0;
+	auto* currentNodePtr = headPtr;
+	while (currentNodePtr != nullptr) {
+		counter++;
+		currentNodePtr = currentNodePtr->getNext();
+	}
+	return counter;
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340Recursive() const {
-	return 20;
+	int counter = 1;
+	return (counter + getCurrentSize340RecursiveHelper(headPtr->getNext() ));
+}
+//helper
+template<typename ItemType>
+int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType>* currentNodePtr) const {
+	if (currentNodePtr->getNext() == nullptr) {
+		return 1;
+	}
+	else {
+		return (1 + getCurrentSize340RecursiveHelper(currentNodePtr->getNext()));
+	}
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getCurrentSize340RecursiveNoHelper() const {
-	return 30;
+	static Node<ItemType>* currentNodePtr = headPtr; //the use of static allows for var to be shared across all recursive calls
+	if (currentNodePtr->getNext() == nullptr) {
+		return 1;
+	}
+	else {
+		currentNodePtr = currentNodePtr->getNext();
+		return (1 + getCurrentSize340RecursiveNoHelper());
+	}
 }
 
 template<typename ItemType>
 int LinkedBag<ItemType>::getFrequencyOf340Recursive(const ItemType& item) const {
 	return 40;
+}
+//helper
+template<typename ItemType>
+int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>* node, const ItemType& item) const {
+	return 70;
 }
 
 template<typename ItemType>
@@ -46,12 +88,4 @@ ItemType LinkedBag<ItemType>::removeRandom340() {
 	return NULL;
 }
 
-template<typename ItemType>
-int LinkedBag<ItemType>::getCurrentSize340RecursiveHelper(Node<ItemType>*node) const {
-	return 60;
-}
-
-template<typename ItemType>
-int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>* node, const ItemType& item) const {
-	return 70;
-}
+//private helpers
