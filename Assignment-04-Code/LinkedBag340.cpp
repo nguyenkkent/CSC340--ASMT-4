@@ -106,13 +106,12 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item
 	}
 }
 
-//function will generate a random number between zero and itemCount. If head node is selected then the head node is deleted. Otherwise value of the randomly selected
-//node will be swapped with the current value of the headPtr. headPtr will be deleted afterwards.
+//function will generate a random number between zero and itemCount-1. If head node is selected then the head node is deleted. Otherwise value of the randomly selected
+//node will be overwritten with the current value of the headPtr. headPtr will be deleted afterwards.
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
 	ItemType itemToBeRemoved = "";
 	int randomIndexToBeRemoved = rand() % itemCount; //the remainder is always from zero to itemCount-1
-
 
 	if (randomIndexToBeRemoved == 0) {//if head is selected
 		auto* nodeToBeDeleted = headPtr;
