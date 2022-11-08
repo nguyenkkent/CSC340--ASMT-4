@@ -88,8 +88,20 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveHelper(Node<ItemType>* curren
 }
 
 template<typename ItemType>
-int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType&item) const {
-	return 50;
+int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item) const {
+	int result = 0;
+	static Node<ItemType>* currentNodePtr = headPtr;
+	if ((currentNodePtr->getItem()) == item ) {
+		result = 1;
+	}
+	if (currentNodePtr->getNext() == nullptr) {
+		currentNodePtr = currentNodePtr->getNext();
+		return result;
+	}
+	else {
+		currentNodePtr = currentNodePtr->getNext();
+		return (result + getFrequencyOf340RecursiveNoHelper(item));
+	}
 }
 
 template<typename ItemType>
@@ -97,4 +109,4 @@ ItemType LinkedBag<ItemType>::removeRandom340() {
 	return NULL;
 }
 
-//private helpers
+
