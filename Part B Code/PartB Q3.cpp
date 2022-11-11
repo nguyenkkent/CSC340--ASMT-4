@@ -42,7 +42,7 @@ int main() {
 		unique_ptr<MyClass> uniquePtr2 = make_unique<MyClass>(10);
 		cout << "Within block uniquePtr2 value: " << uniquePtr2->getData() << endl;
 	}
-	cout << uniquePtr2.get(); //can no longer access object's data member outside of block
+	//cout << uniquePtr2.get(); //can no longer access object's data member outside of block
 
 	return 0;
 }
