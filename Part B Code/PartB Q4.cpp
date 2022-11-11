@@ -20,7 +20,7 @@ public:
 
 int main() {
 	unique_ptr<MyClass> uniquePtr4{ make_unique<MyClass>(25) };
-	//unique_ptr<MyClass> uniquePtr5 = uniquePtr4;//cannot make a second pointer sharing the same ownership of object
+	//shared_ptr<MyClass> sharedPtr6 = uniquePtr4;//cannot make a second pointer sharing the same ownership of object
 	shared_ptr<MyClass> sharedPtr6 = move(uniquePtr4);
 	cout << "address of uniquePtr4: " << &uniquePtr4 << endl
 		 << "value that uniquePtr4 holds: " << uniquePtr4.get()<< endl
