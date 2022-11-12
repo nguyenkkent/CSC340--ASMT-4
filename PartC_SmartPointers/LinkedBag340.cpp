@@ -2,7 +2,6 @@
 using namespace std;
 #include <cstdlib>
 #include <iostream>
-#include <random>
 #include <string>
 #include <ctime>
 
@@ -27,7 +26,9 @@ bool LinkedBag<ItemType>::addEnd340(const ItemType& item) {
 	while (currentNodePtr->getNext() != nullptr) {
 		currentNodePtr = currentNodePtr->getNext();
 	}
-	currentNodePtr->setNext(new Node<ItemType>(item));
+	//currentNodePtr->setNext(new Node<ItemType>(item));
+	shared_ptr<Node<ItemType>> newNodePtr = make_shared<Node<ItemType>>(item);
+	currentNodePtr->setNext(newNodePtr);
 	itemCount++;
 	return true;
 }
