@@ -26,6 +26,6 @@ int main() {
 		 << "value that uniquePtr4 holds: " << uniquePtr4.get()<< endl
 		 << "address of sharedPtr6: " << &sharedPtr6 << endl
 		 << "value that sharedPtr6 holds: " << sharedPtr6->getData() << endl;
-
+		 
 	return 0;
 }
