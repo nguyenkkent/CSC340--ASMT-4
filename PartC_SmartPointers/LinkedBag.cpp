@@ -68,7 +68,7 @@ bool LinkedBag<ItemType>::add(const ItemType& newEntry) {
 	//nextNodePtr->setItem(newEntry);
 	//nextNodePtr->setNext(headPtr);  
 	//headPtr = nextNodePtr;
-	shared_ptr<Node<ItemType>> nextNodePtr{ make_shared<Node<ItemType>>(newEntry,headPtr) };//newly added code
+	unique_ptr<Node<ItemType>> nextNodePtr{ make_unique<Node<ItemType>>(newEntry,headPtr) };//newly added code
 	headPtr = { nextNodePtr.release() };//newly added code
 	itemCount++;
 	return true;

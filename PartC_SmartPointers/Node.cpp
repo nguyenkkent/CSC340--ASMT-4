@@ -22,7 +22,7 @@ Node<ItemType>::Node(const ItemType& anItem, Node<ItemType>* nextNodePtr) :
 
 template<typename ItemType>
 Node<ItemType>::~Node() {
-	//cout << endl << "Destructor called for Node" << endl;
+	cout << "\n\n =====Node "  << item << " Destroyed=====\n";
 };
 
 template<typename ItemType>

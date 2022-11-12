@@ -27,8 +27,8 @@ bool LinkedBag<ItemType>::addEnd340(const ItemType& item) {
 		currentNodePtr = currentNodePtr->getNext();
 	}
 	//currentNodePtr->setNext(new Node<ItemType>(item));
-	shared_ptr<Node<ItemType>> newNodePtr = make_shared<Node<ItemType>>(item);
-	currentNodePtr->setNext(newNodePtr);
+	unique_ptr<Node<ItemType>> newNodePtr = make_unique<Node<ItemType>>(item);
+	currentNodePtr->setNext(newNodePtr.release());
 	itemCount++;
 	return true;
 }
