@@ -3,6 +3,11 @@
 //  Updated by Duc Ta
 //  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 
+#ifndef LINKEDBAG_H
+#define LINKEDBAG_H
+
+
+
 #pragma once
 #include "Node.cpp"
 #include "BagInterface.h"
@@ -34,6 +39,7 @@ private:
 public:
 	LinkedBag();
 	LinkedBag(const LinkedBag<ItemType>&);
+	~LinkedBag();
 	virtual ~LinkedBag();
 	int getCurrentSize() const;
 	bool isEmpty() const;
@@ -51,3 +57,5 @@ private:
 	// pointer to the node or the null pointer 
 	Node<ItemType>* getPointerTo(const ItemType&) const;
 };
+
+#endif LINKEDBAG_H
