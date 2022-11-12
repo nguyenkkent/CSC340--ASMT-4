@@ -22,7 +22,7 @@ LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag) {
 	Node<ItemType>* origChainPtr = aBag.headPtr;
 
 	if (origChainPtr == nullptr) {
-		headPtr = nullptr; 
+		shared_ptr<ItemType> headPtr = nullptr; 
 	}
 	else {
 		headPtr = new Node<ItemType>();
@@ -59,12 +59,15 @@ int LinkedBag<ItemType>::getCurrentSize() const {
 	return itemCount;
 }
 
+
 template<typename ItemType>
 bool LinkedBag<ItemType>::add(const ItemType& newEntry) {
-	Node<ItemType>* nextNodePtr = new Node<ItemType>();
-	nextNodePtr->setItem(newEntry);
-	nextNodePtr->setNext(headPtr);  
-	headPtr = nextNodePtr;
+	//Node<ItemType>* nextNodePtr = new Node<ItemType>();
+	//nextNodePtr->setItem(newEntry);
+	//nextNodePtr->setNext(headPtr);  
+	//headPtr = nextNodePtr;
+	shared_ptr<Node<ItemType>> nextNodePtr{ make_shared<Node<ItemType>>(newEntry,headPtr) };
+	headPtr = { nextNodePtr.release() };
 	itemCount++;
 	return true;
 }
