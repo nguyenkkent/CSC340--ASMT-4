@@ -4,7 +4,6 @@
 //  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 
 #include "Node.h"
-
 //
 //
 // PLEASE DO NOT CHANGE THIS FILE
@@ -21,6 +20,10 @@ template<typename ItemType>
 Node<ItemType>::Node(const ItemType& anItem, Node<ItemType>* nextNodePtr) :
 	item(anItem), next(nextNodePtr) {} 
 
+template<typename ItemType>
+Node<ItemType>::~Node() {
+	cout << "Destructor called for Node" << endl;
+};
 
 template<typename ItemType>
 void Node<ItemType>::setItem(const ItemType& anItem) {
