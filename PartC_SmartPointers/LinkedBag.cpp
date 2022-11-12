@@ -29,7 +29,7 @@ LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag) {
 		//headPtr->setItem(origChainPtr->getItem());
 		shared_ptr<Node<ItemType>> sharedHeadPtr = make_shared<Node<ItemType>>() ;//newly added code
 		sharedHeadPtr->setItem(origChainPtr->getItem());//newly added code
-		headPtr = sharedHeadPtr.release();
+		headPtr = sharedHeadPtr.release();//newly added code
 		Node<ItemType>* newChainPtr = headPtr; 
 		origChainPtr = origChainPtr->getNext();
 
