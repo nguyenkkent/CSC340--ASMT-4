@@ -4,6 +4,7 @@ using namespace std;
 #include <iostream>
 #include <random>
 #include <string>
+#include <ctime>
 
 template<typename ItemType>
 bool LinkedBag<ItemType>::removeSecondNode340() {
@@ -111,7 +112,9 @@ int LinkedBag<ItemType>::getFrequencyOf340RecursiveNoHelper(const ItemType& item
 template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
 	ItemType itemToBeRemoved = "";
-	int randomIndexToBeRemoved = rand() % itemCount; //the remainder is always from zero to itemCount-1
+	//for some reason this produces the same numbers everytime without srand()
+	srand(time(nullptr));
+	int randomIndexToBeRemoved = rand() % itemCount;
 
 	if (randomIndexToBeRemoved == 0) {//if head is selected
 		auto* nodeToBeDeleted = headPtr;
@@ -138,8 +141,6 @@ ItemType LinkedBag<ItemType>::removeRandom340() {
 		itemCount--;
 	}
 	return itemToBeRemoved;
-
-
 }
 
 
