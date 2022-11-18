@@ -2,7 +2,6 @@
 using namespace std;
 #include <cstdlib>
 #include <iostream>
-#include <random>
 #include <string>
 #include <ctime>
 
@@ -113,7 +112,7 @@ template<typename ItemType>
 ItemType LinkedBag<ItemType>::removeRandom340() {
 	ItemType itemToBeRemoved = "";
 	//for some reason this produces the same numbers everytime without srand()
-	srand(time(nullptr));
+	srand((unsigned int)time(NULL));
 	int randomIndexToBeRemoved = rand() % itemCount;
 
 	if (randomIndexToBeRemoved == 0) {//if head is selected

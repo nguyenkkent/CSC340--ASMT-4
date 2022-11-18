@@ -94,7 +94,7 @@ int main() {
 	cout << "\n  ---> 4-FOUR:  " << bag->getFrequencyOf340Recursive("4-FOUR");
 	cout << "\n  ---> 9-NINE:  " << bag->getFrequencyOf340Recursive("9-NINE");
 	displayBag(bag);
-	
+
 	// 8. getFrequencyOf() - Recursive w/ no helper fuction
 	cout << "\n--->>>>> Test 8 --->>>>>";
 	cout << "\n !getFrequencyOf340RecursiveNoHelper() - Recursive... ";
@@ -105,7 +105,7 @@ int main() {
 	cout << "\n  ---> 9-NINE:  " << bag->getFrequencyOf340RecursiveNoHelper("9-NINE");
 	displayBag(bag);
 
-	 //9. Remove a random node
+	// 9. Remove a random node
 	cout << "\n--->>>>> Test 9 --->>>>>";
 	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();
 	cout << "\n !removeRandom340() ---> " << bag->removeRandom340();

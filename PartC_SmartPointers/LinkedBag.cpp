@@ -27,9 +27,9 @@ LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag) {
 	else {
 		//headPtr = new Node<ItemType>();
 		//headPtr->setItem(origChainPtr->getItem());
-		shared_ptr<Node<ItemType>> sharedHeadPtr = make_shared<Node<ItemType>>() ;//newly added code
-		sharedHeadPtr->setItem(origChainPtr->getItem());//newly added code
-		headPtr = sharedHeadPtr.release();//newly added code
+		unique_ptr<Node<ItemType>> uniqueHeadPtr = make_unique<Node<ItemType>>() ;//newly added code
+		uniqueHeadPtr->setItem(origChainPtr->getItem());//newly added code
+		headPtr = uniqueHeadPtr.release();//newly added code
 		Node<ItemType>* newChainPtr = headPtr; 
 		origChainPtr = origChainPtr->getNext();
 
